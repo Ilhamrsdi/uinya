@@ -1,0 +1,11 @@
+{
+    "name": "Feeder",
+    "alias": "feeder",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Feeder\\App\\Providers\\FeederServiceProvider"
+    ],
+    "files": []
+}

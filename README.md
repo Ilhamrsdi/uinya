@@ -4,8 +4,9 @@ Aplikasi Laravel yang menampilkan tampilan **Dashboard** sebagai bagian utama ap
 
 ## Preview
 
-![Dashboard Preview]([https://path.to.your.screenshot/dashboard-preview.png](https://github.com/Ilhamrsdi/uinya/blob/main/docs/image.png))
 
+
+![image](https://github.com/user-attachments/assets/bba94d44-f433-4082-9081-5b7dd8de89fc)
 
 ## Fitur
 

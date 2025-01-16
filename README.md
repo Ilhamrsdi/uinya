@@ -1,38 +1,24 @@
-# SIAKAD-MODULAR - Dashboard
+# SIAKAD-MODULAR
 
-Aplikasi Laravel yang menampilkan tampilan **Dashboard** sebagai bagian utama aplikasi.
+Aplikasi SIAKAD-MODULAR yang sedang dalam proses pengembangan. Tampilan Dashboard akan segera tersedia sebagai bagian utama aplikasi.
 
 ## Preview
 
 
-
+## Coming Soon! Tampilan Dashboard sedang dalam pengembangan dan akan segera ditambahkan.
 ![image](https://github.com/user-attachments/assets/bba94d44-f433-4082-9081-5b7dd8de89fc)
 
 ## Fitur
 
-- Dashboard yang responsif
-- Manajemen pengguna
-- Statistik dan grafik dinamis
-- Notifikasi dan informasi penting
-- Integrasi dengan berbagai sistem
+Dashboard yang responsif (Sedang dalam pengembangan)
+Manajemen pengguna (Fitur sedang dikembangkan)
+Statistik dan grafik dinamis (Akan segera tersedia)
+Notifikasi dan informasi penting (Sedang dalam pengembangan)
+Integrasi dengan arsitektur Modular (Sedang dalam pengembangan)
 
 ## Instalasi
 
-Ikuti langkah-langkah berikut untuk menginstal dan menjalankan aplikasi ini di lingkungan lokal Anda.
+Ikuti langkah-langkah berikut untuk menginstal dan menjalankan aplikasi ini di lingkungan lokal Anda. Harap diperhatikan bahwa aplikasi ini masih dalam pengembangan, beberapa fitur mungkin belum tersedia sepenuhnya.
 
-### Prasyarat
-
-- PHP 8.x atau lebih tinggi
-- Composer
-- Laravel 9.x atau lebih tinggi
-- Database (MySQL, PostgreSQL, dll.)
-
-### Langkah-langkah Instalasi
-
-1. **Clone Repositori**
-
-   Clone repositori ke komputer Anda:
-
-   ```bash
-   git clone https://github.com/username/repository-name.git
-   cd repository-name
+## Kontak
+Jika Anda memiliki pertanyaan lebih lanjut, silakan hubungi kami di [muhamadilhamrosidi0707@gmail.com].

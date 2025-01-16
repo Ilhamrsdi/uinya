@@ -1,11 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-</head>
-<body>
+@extends('feeder::layouts.master')
+
+@section('title')
+    @lang('translation.dashboards')
+@endsection
+
+@section('css')
+    <link href="{{ URL::asset('assets/libs/jsvectormap/jsvectormap.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ URL::asset('assets/libs/swiper/swiper.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet" />
+    <link href="{{ URL::asset('assets/css/custom.css') }}" rel="stylesheet"/>
+@endsection
+
+@section('content')
+@include('feeder::components.breadcrumb', [
+    'li_1' => 'Dashboards',
+    'title' => ''
+])
+<div class="row">
+
     <h1>Dashboard</h1>
 
     @if(session('status'))
@@ -21,5 +33,4 @@
             {{ $isFeederModuleActive ? 'Non-Aktifkan' : 'Aktifkan' }} Modul Feeder
         </button>
     </form>
-</body>
-</html>
+</div>

@@ -1,0 +1,22 @@
+  /* Menambahkan padding pada pagination Grid.js */
+  .gridjs-pagination {
+    padding: 10px;  /* Menambahkan padding 4px di sekitar elemen pagination */
+}
+/* Menghilangkan garis tabel di Grid.js */
+.gridjs-table {
+    border: none !important;
+}
+
+.gridjs-th, .gridjs-td {
+    border: none !important;
+}
+
+/* Menghilangkan border di seluruh tabel dan sel */
+.gridjs-container .gridjs-table th, .gridjs-container .gridjs-table td {
+    border: none !important;
+}
+
+/* Menghilangkan garis pembatas di pagination */
+.gridjs-pagination {
+    border: none !important;
+}

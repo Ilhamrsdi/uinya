@@ -1,29 +1,52 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<!doctype html>
+<html lang="en" data-layout="horizontal" data-topbar="light">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8" />
+    <title>@yield('title') | Siakad POLIWANGI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+    <meta content="Themesbrand" name="author" />
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="{{ URL::asset('assets/images/favicon.ico') }}">
+   
+    @include('feeder::layouts.head-css')
 
-    <title>Feeder Module - {{ config('app.name', 'Laravel') }}</title>
-
-    <meta name="description" content="{{ $description ?? '' }}">
-    <meta name="keywords" content="{{ $keywords ?? '' }}">
-    <meta name="author" content="{{ $author ?? '' }}">
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-
-    {{-- Vite CSS --}}
-    {{-- {{ module_vite('build-feeder', 'resources/assets/sass/app.scss') }} --}}
+    @livewireStyles
 </head>
 
-<body>
-    @yield('content')
-
-    {{-- Vite JS --}}
-    {{-- {{ module_vite('build-feeder', 'resources/assets/js/app.js') }} --}}
+@section('body')
+    @include('feeder::layouts.body')
+@show
+<!-- Begin page -->
+<div id="layout-wrapper">
+    @include('feeder::layouts.topbar')
+    @include('feeder::layouts.sidebar')
+    <!-- ============================================================== -->
+    <!-- Start right Content here -->
+    <!-- ============================================================== -->
+    <div class="main-content">
+        <div class="page-content">
+            <div class="container-fluid">
+                @yield('content')
+            </div>
+            <!-- container-fluid -->
+        </div>
+        <!-- End Page-content -->
+        @include('feeder::layouts.footer')
+    </div>
+    <!-- end main content-->
+</div>
+<!-- END layout-wrapper -->
+@livewireScripts
+<!-- JAVASCRIPT -->
+@include('feeder::layouts.vendor-scripts')
 </body>
+@if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+
+
+</html>

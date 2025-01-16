@@ -20,3 +20,6 @@ Route::get('/', function () {
 Route::get('/feeder', [FeederController::class, 'index'])->name('feeder.index');
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 Route::post('/toggle-feeder', [DashboardController::class, 'toggleFeederModule'])->name('dashboard.toggleFeeder');
+Route::middleware('check.feeder')->group(function () {
+    Route::get('/feeder', [FeederController::class, 'index']);
+});

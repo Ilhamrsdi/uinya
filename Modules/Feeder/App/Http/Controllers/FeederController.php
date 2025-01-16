@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-
+use Illuminate\Support\Facades\Config;
 class FeederController extends Controller
 {
     /**
@@ -14,6 +14,11 @@ class FeederController extends Controller
      */
     public function index()
     {
+        if (!Config::get('modules.feeder')) {
+            return view('feeder::disabled');
+        }
+    
+        // Jika modul aktif, tampilkan halaman yang sesuai
         return view('feeder::index');
     }
 
@@ -30,7 +35,12 @@ class FeederController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        //
+        // Proses penyimpanan data (misalnya)
+        // $data = new Model();
+        // $data->save();
+    
+        // Setelah itu lakukan redirect
+        return redirect()->route('feeder.index')->with('success', 'Data berhasil disimpan!');
     }
 
     /**
@@ -54,7 +64,12 @@ class FeederController extends Controller
      */
     public function update(Request $request, $id): RedirectResponse
     {
-        //
+        // Proses update data
+        // $data = Model::find($id);
+        // $data->update($request->all());
+    
+        // Setelah itu lakukan redirect
+        return redirect()->route('feeder.index')->with('success', 'Data berhasil diperbarui!');
     }
 
     /**

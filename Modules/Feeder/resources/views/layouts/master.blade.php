@@ -9,7 +9,7 @@
     <meta content="Themesbrand" name="author" />
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ URL::asset('assets/images/favicon.ico') }}">
-   
+
     @include('feeder::layouts.head-css')
 
     @livewireStyles
@@ -27,6 +27,7 @@
     <!-- ============================================================== -->
     <div class="main-content">
         <div class="page-content">
+            @yield('feederContent')
             <div class="container-fluid">
                 @yield('content')
             </div>

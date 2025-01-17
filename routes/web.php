@@ -13,6 +13,7 @@ use Modules\Feeder\App\Http\Controllers\EmployeeController;
 use Modules\Feeder\App\Http\Controllers\ScoreController;
 use Modules\Feeder\App\Http\Controllers\StudentController;
 use Modules\Feeder\App\Http\Controllers\ConnectionController;
+use Modules\Feeder\App\Http\Controllers\SettingController;
 
 
 /*
@@ -75,5 +76,11 @@ Route::prefix('laporan/feeder')->name('feeder.')->group(function () {
     Route::prefix('nilai')->name('score.')->group(function () {
         Route::get('/', [ScoreController::class, 'index'])->name('index');
     });
-
+    Route::prefix('setting')->name('feeder.')->group(function () {
+        Route::get('/', [SettingController::class, 'index'])->name('index');
+    });
+    Route::post('/toggle', [SettingController::class, 'toggleFeederModule'])->name('toggleFeederModule');
 });
+
+
+

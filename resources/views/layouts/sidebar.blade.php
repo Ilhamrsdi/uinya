@@ -661,11 +661,16 @@
                                     </ul>
                                 </div>
                             </li>
+                            @if($isFeederModuleActive)
                             <li class="nav-item">
                                 <a href="/laporan/feeder/koneksi" class="nav-link">
                                     <i class="las la-database"></i> Feeder PDDIKTI
                                 </a>
                             </li>
+                            @else
+                             <!-- Jika Feeder tidak aktif, Anda bisa menampilkan pesan atau tidak menampilkan apapun -->
+                            <p>Modul Feeder tidak aktif.</p>
+                            @endif
                         </ul>
                     </div>
                 </li>

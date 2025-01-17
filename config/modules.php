@@ -4,6 +4,7 @@ use Nwidart\Modules\Activators\FileActivator;
 use Nwidart\Modules\Providers\ConsoleServiceProvider;
 
 return [
+    'feeder' => env('MODULE_FEEDER_ENABLED', false), // Default false jika .env tidak ditemukan
 
     /*
     |--------------------------------------------------------------------------
@@ -209,9 +210,9 @@ return [
          */
         'files' => 'register',
     ],
-
-    'feeder' => env('MODULE_FEEDER_ENABLED', true),  // Default true (aktif)
-    /*
+    // 'feeder' => [
+    //     'enabled' => env('MODULE_FEEDER_ENABLED', false),
+   /*
     |--------------------------------------------------------------------------
     | Activators
     |--------------------------------------------------------------------------

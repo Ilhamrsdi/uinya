@@ -11,6 +11,7 @@ use Modules\Feeder\App\Http\Controllers\ScoreController;
 use Modules\Feeder\App\Http\Controllers\StudyProgramController;
 use Modules\Feeder\App\Http\Controllers\ScoreScaleController;
 use Modules\Feeder\App\Http\Controllers\StudentController;
+use Modules\Feeder\App\Http\Controllers\SettingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,43 +24,19 @@ use Modules\Feeder\App\Http\Controllers\StudentController;
 |
 */
 
-Route::group([], function () {
-    Route::resource('feeder', ConnectionController::class)->names('feeder.connection');
-});
+Route::prefix('feeder')->group(function () {
+    Route::get('/setting-feeder', [SettingController::class, 'index'])->name('feeder.setting');
 
-Route::group([], function () {
-    Route::resource('feeder', StudyProgramController::class)->names('feeder.studyProgram');
+    // Resource routes
+    Route::resource('connections', ConnectionController::class)->names('feeder.connection');
+    Route::resource('study-programs', StudyProgramController::class)->names('feeder.studyProgram');
+    Route::resource('score-scales', ScoreScaleController::class)->names('feeder.scoreScale');
+    Route::resource('courses', CourseController::class)->names('feeder.course');
+    Route::resource('curriculums', CurriculumController::class)->names('feeder.curriculum');
+    Route::resource('course-curriculums', CourseCurriculumController::class)->names('feeder.courseCurriculum');
+    Route::resource('students', StudentController::class)->names('feeder.student');
+    Route::resource('employees', EmployeeController::class)->names('feeder.employee');
+    Route::resource('classes', CollageClassController::class)->names('feeder.class');
+    Route::resource('scores', ScoreController::class)->names('feeder.score');
+    Route::post('/toggle-program-studi', [SettingController::class, 'toggleFeederProgramStudi'])->name('toggleProgramStudi');
 });
-
-Route::group([], function () {
-    Route::resource('feeder', ScoreScaleController::class)->names('feeder.scoreScale');
-});
-
-Route::group([], function () {
-    Route::resource('feeder', CourseController::class)->names('feeder.course');
-});
-
-Route::group([], function () {
-    Route::resource('feeder', CurriculumController::class)->names('feeder.curriculum');
-});
-
-Route::group([], function () {
-    Route::resource('feeder', CourseCurriculumController::class)->names('feeder.courseCurriculum');
-});
-
-Route::group([], function () {
-    Route::resource('feeder', StudentController::class)->names('feeder.student');
-});
-
-Route::group([], function () {
-    Route::resource('feeder', EmployeeController::class)->names('feeder.employee');
-});
-
-Route::group([], function () {
-    Route::resource('feeder', CollageClassController::class)->names('feeder.class');
-});
-
-Route::group([], function () {
-    Route::resource('feeder', ScoreController::class)->names('feeder.score');
-});
-

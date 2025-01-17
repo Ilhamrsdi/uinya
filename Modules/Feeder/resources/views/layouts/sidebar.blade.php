@@ -661,9 +661,16 @@
                                     </ul>
                                 </div>
                             </li>
+                            @if(env('MODULE_FEEDER_ENABLED', false))
+                            <a href="/laporan/feeder/koneksi" class="nav-link">
+                                <i class="las la-database"></i> Feeder PDDIKTI
+                            </a>
+                        @endif
+                        
+
                             <li class="nav-item">
-                                <a href="/feeder" class="nav-link">
-                                    <i class="las la-database"></i> Feeder PDDIKTI
+                                <a href="/laporan/feeder/setting" class="nav-link">
+                                    <i class="las la-cog"></i> Setting Feeder
                                 </a>
                             </li>
                         </ul>
@@ -704,6 +711,11 @@
                 <li class="nav-item">
                     <a href="/selengkapnya/manajemen-user" class="nav-link">
                         <i class="las la-users"></i> Manajemen User
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/setting-modul/index" class="nav-link">
+                        <i class="las la-wrench"></i>Setting Modul
                     </a>
                 </li>
             </ul>

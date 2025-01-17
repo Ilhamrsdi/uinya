@@ -104,32 +104,37 @@
                                                                 <th>Status</th>
                                                             </tr>
                                                         </thead>
-                                                        <tbody class="list form-check-all">
-                                                            <?php
-                                                            $programStudi = [
-                                                                'Kode' => 'PS001',
-                                                                'Nama' => 'Informatika',
-                                                                'Status' => 'Aktif',
-                                                                'Jenjang' => 'S1',
-                                                                'Akreditasi' => 'Terakreditasi'
-                                                            ];
-
-                                                            for ($i = 1; $i <= 20; $i++) {
-                                                                echo "<tr>";
-                                                                echo "<td>
-                                                                        <div class='form-check'>
-                                                                            <input class='form-check-input' type='checkbox' value='{$i}'>
-                                                                        </div>
-                                                                      </td>";
-                                                                echo "<td>{$i}</td>";
-                                                                echo "<td>{$programStudi['Kode']}</td>";
-                                                                echo "<td>{$programStudi['Nama']}</td>";
-                                                                echo "<td>{$programStudi['Status']}</td>";
-                                                                echo "<td>{$programStudi['Jenjang']}</td>";
-                                                                echo "<td>{$programStudi['Akreditasi']}</td>";
-                                                                echo "</tr>";
-                                                            }
-                                                            ?>
+                                                        <tbody>
+                                                            @foreach($studyPrograms as $index => $studyProgram)
+                                                                <tr>
+            
+                                                                    <td><input type="checkbox" class="selectCheckbox"></td>
+                                                                    <td>{{ $index + 1 }}</td>
+                                                                    <td>{{ $studyProgram->code ?? 'No Code' }}</td>
+                                                                    <td>
+                                                                        @if($studyProgram && $studyProgram->education_level_id)
+                                                                            @if($studyProgram->education_level_id == 22)
+                                                                                D3 - {{ $studyProgram->name }}
+                                                                            @elseif($studyProgram->education_level_id == 23)
+                                                                                D4 - {{ $studyProgram->name }}
+                                                                            @else
+                                                                                {{ $studyProgram->name }}
+                                                                            @endif
+                                                                        @else
+                                                                            N/A
+                                                                        @endif
+                                                                    </td>
+            
+                                                                    <td>{{ $studyProgram->status ?? 'No Status' }}</td>
+                                                                    <td>{{ $studyProgram->education_level_id == 22 ? 'D3' : 'D4' }}</td>
+                                                                    <td>
+                                                                        <span class="badge bg-{{ in_array($studyProgram->feeder_status, ['SUKSES', 'ADA']) ? 'success' : 'danger' }}">
+                                                                            {{ in_array($studyProgram->feeder_status, ['SUKSES', 'ADA']) ? 'SUDAH SYNC' : 'BELUM SYNC' }}
+                                                                        </span>
+            
+                                                                    </td>
+                                                                </tr>
+                                                            @endforeach
                                                         </tbody>
                                                     </table>
 

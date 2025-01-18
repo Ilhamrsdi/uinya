@@ -104,11 +104,14 @@
                                                                 <th>Status</th>
                                                             </tr>
                                                         </thead>
-                                                        <tbody>
+                                                        <tbody class="list form-check-all">
                                                             @foreach($studyPrograms as $index => $studyProgram)
                                                                 <tr>
-            
-                                                                    <td><input type="checkbox" class="selectCheckbox"></td>
+                                                                    <td>
+                                                                        <div class="form-check">
+                                                                            <input class="form-check-input selectCheckbox" type="checkbox" id="check{{ $index }}">
+                                                                        </div>
+                                                                    </td>
                                                                     <td>{{ $index + 1 }}</td>
                                                                     <td>{{ $studyProgram->code ?? 'No Code' }}</td>
                                                                     <td>
@@ -124,23 +127,94 @@
                                                                             N/A
                                                                         @endif
                                                                     </td>
-            
                                                                     <td>{{ $studyProgram->status ?? 'No Status' }}</td>
                                                                     <td>{{ $studyProgram->education_level_id == 22 ? 'D3' : 'D4' }}</td>
                                                                     <td>
                                                                         <span class="badge bg-{{ in_array($studyProgram->feeder_status, ['SUKSES', 'ADA']) ? 'success' : 'danger' }}">
                                                                             {{ in_array($studyProgram->feeder_status, ['SUKSES', 'ADA']) ? 'SUDAH SYNC' : 'BELUM SYNC' }}
                                                                         </span>
-            
                                                                     </td>
                                                                 </tr>
                                                             @endforeach
                                                         </tbody>
                                                     </table>
-
                                                 </div>
+                                                 {{-- Start Paginations --}}
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <div>
+                                                        <!-- Dropdown untuk memilih jumlah baris per halaman -->
+                                                        <form method="GET" action="" class="d-flex">
+                                                            <div class="search-box me-2">
+                                                                <select id="rowCount" name="per_page" class="form-select w-auto" onchange="this.form.submit()">
+                                                                    <option value="10" {{ request('per_page') == 10 ? 'selected' : '' }}>10 baris</option>
+                                                                    <option value="25" {{ request('per_page') == 25 ? 'selected' : '' }}>25 baris</option>
+                                                                    <option value="50" {{ request('per_page') == 50 ? 'selected' : '' }}>50 baris</option>
+                                                                </select>
+                                                            </div>
+                                                        </form>
+                                                    </div>
 
+                                                    <div class="pagination-wrap hstack gap-2">
+                                                        {{-- First Button --}}
+                                                        <a class="page-item pagination-prev {{ $studyPrograms->onFirstPage() ? 'disabled' : '' }}" href="{{ $studyPrograms->url(1) }}">
+                                                            First
+                                                        </a>
 
+                                                        {{-- Previous Button --}}
+                                                        <a class="page-item pagination-prev {{ $studyPrograms->onFirstPage() ? 'disabled' : '' }}" href="{{ $studyPrograms->previousPageUrl() }}">
+                                                            Previous
+                                                        </a>
+
+                                                        {{-- Pagination Links --}}
+                                                        <ul class="pagination listjs-pagination mb-0">
+                                                            @php
+                                                                $currentPage = $studyPrograms->currentPage();
+                                                                $lastPage = $studyPrograms->lastPage();
+                                                                $startPage = max($currentPage - 2, 1); // Tampilkan 2 halaman sebelumnya
+                                                                $endPage = min($currentPage + 2, $lastPage); // Tampilkan 2 halaman berikutnya
+                                                            @endphp
+
+                                                            @if ($startPage > 1)
+                                                                <li class="page-item">
+                                                                    <a class="page-link" href="{{ $studyPrograms->url(1) }}">1</a>
+                                                                </li>
+                                                                @if ($startPage > 2)
+                                                                    <li class="page-item disabled">
+                                                                        <span class="page-link">...</span>
+                                                                    </li>
+                                                                @endif
+                                                            @endif
+
+                                                            @for ($page = $startPage; $page <= $endPage; $page++)
+                                                                <li class="page-item {{ $studyPrograms->currentPage() == $page ? 'active' : '' }}">
+                                                                    <a class="page-link" href="{{ $studyPrograms->url($page) }}">{{ $page }}</a>
+                                                                </li>
+                                                            @endfor
+
+                                                            @if ($endPage < $lastPage)
+                                                                @if ($endPage < $lastPage - 1)
+                                                                    <li class="page-item disabled">
+                                                                        <span class="page-link">...</span>
+                                                                    </li>
+                                                                @endif
+                                                                <li class="page-item">
+                                                                    <a class="page-link" href="{{ $studyPrograms->url($lastPage) }}">{{ $lastPage }}</a>
+                                                                </li>
+                                                            @endif
+                                                        </ul>
+
+                                                        {{-- Next Button --}}
+                                                        <a class="page-item pagination-next {{ $studyPrograms->hasMorePages() ? '' : 'disabled' }}" href="{{ $studyPrograms->nextPageUrl() }}">
+                                                            Next
+                                                        </a>
+
+                                                        {{-- Last Button --}}
+                                                        <a class="page-item pagination-next {{ $studyPrograms->hasMorePages() ? '' : 'disabled' }}" href="{{ $studyPrograms->url($lastPage) }}">
+                                                            Last
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <!-- end paginations -->
                                             </div>
                                         </div>
                                     </div>

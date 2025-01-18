@@ -671,6 +671,11 @@
                              <!-- Jika Feeder tidak aktif, Anda bisa menampilkan pesan atau tidak menampilkan apapun -->
                             <p>Modul Feeder tidak aktif.</p>
                             @endif
+                            <li class="nav-item">
+                                <a href="/laporan/feeder/setting" class="nav-link">
+                                    <i class="las la-cog"></i> Setting Feeder
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </li>
